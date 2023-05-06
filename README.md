@@ -6,25 +6,25 @@ Therefore, if costs exceed benefits, there is a high possibility that FTA will n
 The purpose of the project is to analyze  Japan's FTA utilization rate on imports and explore its determinants through regression analysis. For the determinants, the Tariff Margin and the Monthly Import is used. 
 
 ## Datasets
-+ Japan's total import data
++ **Japan's total import data**
 Source: [Japan Custom](https://www.customs.go.jp/toukei/info/)
-- CIF import value
-- national tariff line level (HS (Harmonized System) nine-digit level)
-- annual data of 2012 to 2021
-- HS2017 version
+    - CIF import value
+    - national tariff line level (HS (Harmonized System) nine-digit level)
+    - annual data of 2012 to 2021
+    - HS2017 version
 
-+ Japan's FTA utilized import data
++ **Japan's FTA utilized import data**
 Source: [Japan Custom](https://www.customs.go.jp/kyotsu/kokusai/toukei/)
-- CIF import value
-- national tariff line level (HS nine-digit level)
-- annual data of 2012 to 2021
-- data for 2012 to 2016: HS2012 version
-  data for 2016 to 2021: HS2017 version
+    - CIF import value
+    - national tariff line level (HS nine-digit level)
+    - annual data of 2012 to 2021
+    - data for 2012 to 2016: HS2012 version\n
+      data for 2016 to 2021: HS2017 version
 
-+ Japan's MFN tariff rate and FTA tariff rate
++ **Japan's MFN tariff rate and FTA tariff rate**
 Source: [World Trade Organization](https://tao.wto.org/welcome.aspx?ReturnUrl=%2f)
-- national tariff line level (HS nine-digit level)
-- HS2017 version
+    - national tariff line level (HS nine-digit level)
+    - HS2017 version
 
 *Note*: As of May 2023, Japan has concluded 20 RTAs with 50 countries in force. However, the latest FTA, RCEP (Regional Comprehensive EPA), which was concluded in January 2022 will not be included in the analysis since the annual import data was only available until 2021. 
 
@@ -64,11 +64,15 @@ It shall be noted that simplification is made regarding to the calculation of ta
 
 
 Above is the result of the regression model estimated by the simple ordinary least squares (OLS) method. 
+
 The result shows that the regression model has a good overall fit as indicated by the high R-squared value of 0.692.
+
 Coefficient for both *Tariff Margin* and *Monthly Imports* shows positive relation with the *FTA Utilization Rate*. This result is reasonable in a common sense that as the tariff margin become larger, it implies the gain from applying FTA tariff rate will increase, which leads to greater incentive to use FTA for firm. Also, similarly, as the transaction size is bigger for the firm, incentive to use FTA will be greater.
 
 ## Conclusion
-Based on the regression analysis, I have two options to imrpove FTA utilization rate: to increase tariff margin or to increase the size of the import. However, since import size depends on the decision of the importer (the firms), it is not realistic for the government to intervene to change firm's decision making. Likewise, as tariff is needed to protect the domestic industry, it is not ideal to lower the FTA tariff rate to increase the tariff margin. 
+Based on the regression analysis, I have two options to improve FTA utilization rate: to increase tariff margin or to increase the size of the import. However, since import size depends on the decision of the importer (the firms), it is not realistic for the government to intervene to change firm's decision making. Likewise, as tariff is needed to protect the domestic industry, it is not ideal to lower the FTA tariff rate to increase the tariff margin.
+
 In hence, policies to promoting positive factors (tariff margin and import size) are limited. 
 It is assumed that the negative factors are the main obstacle for utilizing FTA as seen from the past research papers.
+
 Therefore, for future research should include negative factors such as *restrictiveness of rules of origin* and other *various costs* as independent variables in the regression model.
