@@ -56,12 +56,14 @@ Running order of the script shall be:
 **1. '01_tariffmargin.py'**
 
 This script aims to create a dataframe *'master_jp_tariff'*: dataframe of tariff margin for each tariff line. 
+
 The first section reads an excel file of Japan's MFN and FTA tariff rate and clean the data to only the necessary datas for calculating the tariff margin. Then the next section calculates the tariff margin for eachtariff line. 
 
 
 **2. '02_epa_imports.py'**
 
 This script aims to create a dataframe *'master_jp_epa'*: dataframe of FTA utilized annual import data for each tariff line for 2012 through 2021. 
+
 The first section reads excel files of Japan's FTA import datas for 2012 through 2021. Since a column name and column values for files before 2020 and after 2021 is different, the reading process is done seperately. In addition, it cleans the data by (a) translate the country name from Japanese to English, (b) exclude GSP or LDC utlized import datas, and (c) exclude import datas where tariff margin is zero. 
 
 **2. '03_total_imports.py'**
@@ -103,4 +105,4 @@ Based on the regression analysis, I have two policy options to improve FTA utili
 
 In hence, policies to promoting positive factors (tariff margin and import size) are limited. It is assumed that the negative factors are the main obstacle for utilizing FTA as seen from the past research papers.
 
-Therefore, for the future research, negative factors such as restrictiveness of rules of origin and other various costs shall be included as the independent variables in the regression model and explore policies to improve the FTA utilization rate. 
+Therefore, for the future research, negative factors such as restrictiveness of rules of origin and other various costs shall be included as independent variables in the regression model and explore policies to improve the FTA utilization rate. 

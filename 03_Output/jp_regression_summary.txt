@@ -1,0 +1,26 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                     UR   R-squared:                       0.692
+Model:                            OLS   Adj. R-squared:                  0.692
+Method:                 Least Squares   F-statistic:                 1.613e+05
+Date:                Sat, 06 May 2023   Prob (F-statistic):               0.00
+Time:                        18:31:48   Log-Likelihood:                -2980.6
+No. Observations:              143465   AIC:                             5967.
+Df Residuals:                  143462   BIC:                             5997.
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+=====================================================================================
+                        coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+const                 0.0260      0.001     18.976      0.000       0.023       0.029
+ln_Monthly IM         0.0910      0.000    567.811      0.000       0.091       0.091
+Ave Tariff Margin     0.0048      0.000     28.155      0.000       0.004       0.005
+==============================================================================
+Omnibus:                    24538.588   Durbin-Watson:                   0.899
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):           253031.548
+Skew:                           0.517   Prob(JB):                         0.00
+Kurtosis:                       9.424   Cond. No.                         17.3
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
