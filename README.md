@@ -9,10 +9,10 @@ The purpose of the project is to analyze  Japan's FTA utilization rate on import
 + **Japan's total import data**
 
 Source: [Japan Custom](https://www.customs.go.jp/toukei/info/)
-- CIF import value
-- national tariff line level (HS (Harmonized System) nine-digit level)
-- annual data of 2012 to 2021
-- HS2017 version
+  - CIF import value
+  - national tariff line level (HS (Harmonized System) nine-digit level)
+  - annual data of 2012 to 2021
+  - HS2017 version
 
 + **Japan's FTA utilized import data**
 
@@ -108,7 +108,7 @@ R-squared | 0.692
 --- | ---
 
 
-| Coefficient
+Variable | Coefficient
 --- | ---
 Const | 0.0260
 ln_Monthly Import | 0.0910
