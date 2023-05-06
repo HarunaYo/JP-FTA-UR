@@ -31,7 +31,7 @@ The purpose of the project is to analyze  Japan's FTA utilization rate on import
 The specific regression model used in this project is as follows. *FTA Utilization Rate* is the dependant variable and *Tariff Margin* and *Monthly Imports* are the independant variables. 
 
 
-        *FTA Utilization Rate* = α*Tariff Margin* + βln*Monthly Imports*
+*FTA Utilization Rate* = α*Tariff Margin* + βln*Monthly Imports*
 
 
 
@@ -101,7 +101,7 @@ ln_Monthly Import | 0.0910
 Tariff Margin | 0.0048
 
 ## Conclusion
-Based on the regression analysis, I have two policy options to improve FTA utilization rate: to increase tariff margin or to increase the size of the import. However, since import size depends on the decision of the importer (the firms), it is not realistic for the government to intervene to change firm's decision making. Likewise, tariffs are needed to protect the domestic industry, therfore it is not ideal to lower the FTA tariff rate to increase the tariff margin.
+The regression analysis suggests two policy options to improve FTA utilization rate: to increase tariff margin or to increase the size of the import. However, since import size depends on the decision of the importer (the firms), it is not realistic for the government to intervene to change firm's decision making. Likewise, tariffs are needed to protect the domestic industry, therfore it is not ideal to lower the FTA tariff rate to increase the tariff margin.
 
 In hence, policies to promoting positive factors (tariff margin and import size) are limited. It is assumed that the negative factors are the main obstacle for utilizing FTA as seen from the past research papers.
 
