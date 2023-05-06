@@ -6,7 +6,7 @@ Therefore, if costs exceed benefits, there is a high possibility that FTA will n
 The purpose of the project is to analyze  Japan's FTA utilization rate on imports and explore its determinants through regression analysis. For the determinants, the Tariff Margin and the Monthly Import is used. 
 
 ## Datasets
-+ **Japan's total import data**
++ **Japan's total import data**"\n"
 Source: [Japan Custom](https://www.customs.go.jp/toukei/info/)
     - CIF import value
     - national tariff line level (HS (Harmonized System) nine-digit level)
