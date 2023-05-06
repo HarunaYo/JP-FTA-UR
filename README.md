@@ -6,7 +6,8 @@ Therefore, if costs exceed benefits, there is a high possibility that FTA will n
 The purpose of the project is to analyze  Japan's FTA utilization rate on imports and explore its determinants through regression analysis. For the determinants, the Tariff Margin and the Monthly Import is used. 
 
 ## Datasets
-+ **Japan's total import data**"\n"
++ **Japan's total import data**
+
 Source: [Japan Custom](https://www.customs.go.jp/toukei/info/)
     - CIF import value
     - national tariff line level (HS (Harmonized System) nine-digit level)
@@ -14,6 +15,7 @@ Source: [Japan Custom](https://www.customs.go.jp/toukei/info/)
     - HS2017 version
 
 + **Japan's FTA utilized import data**
+
 Source: [Japan Custom](https://www.customs.go.jp/kyotsu/kokusai/toukei/)
     - CIF import value
     - national tariff line level (HS nine-digit level)
@@ -22,6 +24,7 @@ Source: [Japan Custom](https://www.customs.go.jp/kyotsu/kokusai/toukei/)
       data for 2016 to 2021: HS2017 version
 
 + **Japan's MFN tariff rate and FTA tariff rate**
+
 Source: [World Trade Organization](https://tao.wto.org/welcome.aspx?ReturnUrl=%2f)
     - national tariff line level (HS nine-digit level)
     - HS2017 version
@@ -48,22 +51,59 @@ It shall be noted that simplification is made regarding to the calculation of ta
 - *Monthly Imports*: the average of monthly imports of products p from country i in year t. This variable is suppose to define as a firm-level transaction sizes. Due to data availability, this was the nearest estimation that can be made for firm-level transaction size. 
 
 ## Explanation of the Scripts
+*Note*:
+Running order of the script:
+    1. '01_tariffmargin.py'
+    2. '02_epa_imports.py' or '03_total_imports.py'
+    3. '04_epa_utilization_rate.py' or '05_regression_analysis.py'
 
 1. '01_tariffmargin.py'
 
+This script aims to create a dataframe *'master_jp_tariff'*: dataframe of tariff margin for each tariff line. 
+
+The first section reads an excel file of Japan's MFN and FTA tariff rate and clean the data to only the necessary datas for calculating the tariff margin. Then the next section calculates the tariff margin for eachtariff line. Finally, the dataframe *'master_jp_tariff'* is exported as a pickle file for later use in '02_epa_imports.py' and '03_total_imports.py'. 
+
+
 1. '02_epa_imports.py'
+
+This script aims to create a dataframe *'master_jp_epa'*: dataframe of FTA utilized annual import data for each tariff line for 2012 through 2021. 
+
+The first section reads excel files of Japan's FTA import datas for 2012 through 2021. Since a column name and column values for files before 2020 and after 2021 is different, the reading process is done seperately. In addition, it cleans the data by (a) translate the country name from Japanese to English, (b) exclude GSP or LDC utlized import datas, and (c) exclude import datas where tariff margin is zero. 
+
 
 1. '03_total_imports.py'
 
+This script aims to create a dataframe *'master_jp_im'*: dataframe of total annual import data for each tariff line for 2012 through 2021. 
+
+The first section read an excel files of Japan's total import datas for 2012 through 2021. In addition, it cleans the data by (a) convert the import value into thousands yen, (b) translate the country name from Japanese to English, (c) exclude non-FTA partner countries' import datas, and (d) exclude import datas where tariff margin is zero etc..  
+
+
 1. '04_epa_utilization_rate.py'
+
+This script aims to calculate the FTA utilization rate from different perspectives by using *'master_jp_epa'* and *'master_jp_im'*. To note, this script is independent from the purpose of this project analysis. Rather, it is to observe the overview of the FTA utilization datas and get insights.
+
+It calculates the FTA utilization rate by 3 different perspectives: (1) by country level and product at section level (* section level is defined by the WCO), (2) by country level, and (3) by product at section level. It also creates a pivot table by section and country with the FTA utilization rare of year 2021. 
+
 
 1. '05_regression_analysis.py'
 
+This script aims to conduct regression analysis by using *'master_jp_epa'* and *'master_jp_im'*. 
+
+First, it prepares the data for each variable in the regression model: FTA utilization rate, monthly import, and tariff margin. Then, conduct regression analysis by simple ordinary least squares (OLS) method using the variable datas.
+
+
 ## Regression Results
-![alt text](C:\Users\hayoshiz\OneDrive - Syracuse University\Capstone Project\JP-FTA-UR\03_Output/regression_summary.csv "????")
 
+Below is the result of the regression model estimated by the OLS method. 
 
-Above is the result of the regression model estimated by the simple ordinary least squares (OLS) method. 
+**OLS Regression Results for Japan's FTA Utilizarion Rate**
+R-squared | 0.692
+
+| Coefficient
+Const | 0.0260
+ln_Monthly Import | 0.0910
+Tariff Margin | 0.0048
+
 
 The result shows that the regression model has a good overall fit as indicated by the high R-squared value of 0.692.
 
