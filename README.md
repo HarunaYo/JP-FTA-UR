@@ -9,10 +9,10 @@ The purpose of the project is to analyze  Japan's FTA utilization rate on import
 + **Japan's total import data**
 
 Source: [Japan Custom](https://www.customs.go.jp/toukei/info/)
-  - CIF import value
-  - national tariff line level (HS (Harmonized System) nine-digit level)
-  - annual data of 2012 to 2021
-  - HS2017 version
+CIF import value
+national tariff line level (HS (Harmonized System) nine-digit level)
+annual data of 2012 to 2021
+HS2017 version
 
 + **Japan's FTA utilized import data**
 
@@ -91,33 +91,25 @@ This script aims to calculate the FTA utilization rate from different perspectiv
 
 It calculates the FTA utilization rate by 3 different perspectives: (1) by country level and product at section level (* section level is defined by the WCO), (2) by country level, and (3) by product at section level. It also creates a pivot table by product section and country with the FTA utilization rate of year 2021. 
 
-
-1. '05_regression_analysis.py'
+3. '05_regression_analysis.py'
 
 This script aims to conduct regression analysis by using *'master_jp_epa'* and *'master_jp_im'*. 
 
 First, it prepares the data for each variable in the regression model: FTA utilization rate, monthly import, and tariff margin. Then, conduct regression analysis by simple ordinary least squares (OLS) method using the variable datas.
 
-
 ## Regression Results
 
 Below is the result of the regression model estimated by the OLS method. 
+The regression model had a good overall fit as indicated by the high R-squared value of 0.692.
+
+Coefficient for both *Tariff Margin* and *Monthly Imports* shows positive relation with the *FTA Utilization Rate*. This result is reasonable by a common sense that as the tariff margin become larger, it implies the gain from applying FTA tariff rate will increase, which leads to greater incentive to use FTA for firms. Also, similarly, as the transaction size is bigger for the firm, incentive to use FTA will be greater.
 
 **OLS Regression Results for Japan's FTA Utilizarion Rate**
-R-squared | 0.692
---- | ---
-
-
 Variable | Coefficient
 --- | ---
 Const | 0.0260
 ln_Monthly Import | 0.0910
 Tariff Margin | 0.0048
-
-
-The result shows that the regression model has a good overall fit as indicated by the high R-squared value of 0.692.
-
-Coefficient for both *Tariff Margin* and *Monthly Imports* shows positive relation with the *FTA Utilization Rate*. This result is reasonable by a common sense that as the tariff margin become larger, it implies the gain from applying FTA tariff rate will increase, which leads to greater incentive to use FTA for firms. Also, similarly, as the transaction size is bigger for the firm, incentive to use FTA will be greater.
 
 ## Conclusion
 Based on the regression analysis, I have two policy options to improve FTA utilization rate: to increase tariff margin or to increase the size of the import. However, since import size depends on the decision of the importer (the firms), it is not realistic for the government to intervene to change firm's decision making. Likewise, tariffs are needed to protect the domestic industry, therfore it is not ideal to lower the FTA tariff rate to increase the tariff margin.
