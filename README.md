@@ -6,35 +6,24 @@ Therefore, if costs exceed benefits, there is a high possibility that FTA will n
 The purpose of the project is to analyze  Japan's FTA utilization rate on imports and explore its determinants through regression analysis. For the determinants, the tariff margin and the monthly imports are used. 
 
 ## Datasets
-+ **Japan's total import data**
+### **Japan's total import data**
+- Source: [Japan Custom](https://www.customs.go.jp/toukei/info/)
+- CIF import value
+- national tariff line level (HS (Harmonized System) nine-digit level)
+- annual data of 2012 to 2021
+- HS2017 version
 
-Source: [Japan Custom](https://www.customs.go.jp/toukei/info/)
-CIF import value
-national tariff line level (HS (Harmonized System) nine-digit level)
-annual data of 2012 to 2021
-HS2017 version
+### **Japan's FTA utilized import data**
+- Source: [Japan Custom](https://www.customs.go.jp/kyotsu/kokusai/toukei/)
+- CIF import value
+- national tariff line level (HS nine-digit level)
+- annual data of 2012 to 2021
+- data for 2012 to 2016: HS2012 version, data for 2016 to 2021: HS2017 version
 
-+ **Japan's FTA utilized import data**
-
-Source: [Japan Custom](https://www.customs.go.jp/kyotsu/kokusai/toukei/)
-
-    - CIF import value
-
-    - national tariff line level (HS nine-digit level)
-
-    - annual data of 2012 to 2021
-
-    - data for 2012 to 2016: HS2012 version
-
-      data for 2016 to 2021: HS2017 version
-
-+ **Japan's MFN tariff rate and FTA tariff rate**
-
-Source: [World Trade Organization](https://tao.wto.org/welcome.aspx?ReturnUrl=%2f)
-
-    - national tariff line level (HS nine-digit level)
-
-    - HS2017 version
+### **Japan's MFN tariff rate and FTA tariff rate**
+- Source: [World Trade Organization](https://tao.wto.org/welcome.aspx?ReturnUrl=%2f)
+- national tariff line level (HS nine-digit level)
+- HS2017 version
 
 *Note*: As of May 2023, Japan has 20 FTAs with 50 countries in force. However, the latest FTA, RCEP (Regional Comprehensive EPA), which was concluded in January 2022 will not be included in the analysis since the annual import data is only available until 2021. 
 
@@ -59,39 +48,36 @@ It shall be noted that simplification is made regarding to the calculation of ta
 
 ## Explanation of the Scripts
 Running order of the script shall be:
-
-    1. '01_tariffmargin.py'
-
-    2. '02_epa_imports.py' or '03_total_imports.py'
-
-    3. '04_epa_utilization_rate.py' or '05_regression_analysis.py'
-
 1. '01_tariffmargin.py'
+2. '02_epa_imports.py' or '03_total_imports.py'
+3. '04_epa_utilization_rate.py' or '05_regression_analysis.py'
+
+
+**1. '01_tariffmargin.py'**
 
 This script aims to create a dataframe *'master_jp_tariff'*: dataframe of tariff margin for each tariff line. 
 The first section reads an excel file of Japan's MFN and FTA tariff rate and clean the data to only the necessary datas for calculating the tariff margin. Then the next section calculates the tariff margin for eachtariff line. 
 
 
-2. '02_epa_imports.py'
+**2. '02_epa_imports.py'**
 
 This script aims to create a dataframe *'master_jp_epa'*: dataframe of FTA utilized annual import data for each tariff line for 2012 through 2021. 
 The first section reads excel files of Japan's FTA import datas for 2012 through 2021. Since a column name and column values for files before 2020 and after 2021 is different, the reading process is done seperately. In addition, it cleans the data by (a) translate the country name from Japanese to English, (b) exclude GSP or LDC utlized import datas, and (c) exclude import datas where tariff margin is zero. 
 
-
-2. '03_total_imports.py'
+**2. '03_total_imports.py'**
 
 This script aims to create a dataframe *'master_jp_im'*: dataframe of total annual import data for each tariff line for 2012 through 2021. 
 
 The first section read an excel files of Japan's total import datas for 2012 through 2021. In addition, it cleans the data by (a) convert the import value into thousands yen, (b) translate the country name from Japanese to English, (c) exclude non-FTA partner countries' import datas, and (d) exclude import datas where tariff margin is zero etc..  
 
 
-3. '04_epa_utilization_rate.py'
+**3. '04_epa_utilization_rate.py'**
 
 This script aims to calculate the FTA utilization rate from different perspectives by using dataframes *'master_jp_epa'* and *'master_jp_im'*. To note, this script is independent from the purpose of this project analysis. Rather, it is to observe the overview of the FTA utilization datas and get insights.
 
 It calculates the FTA utilization rate by 3 different perspectives: (1) by country level and product at section level (* section level is defined by the WCO), (2) by country level, and (3) by product at section level. It also creates a pivot table by product section and country with the FTA utilization rate of year 2021. 
 
-3. '05_regression_analysis.py'
+**3. '05_regression_analysis.py'**
 
 This script aims to conduct regression analysis by using *'master_jp_epa'* and *'master_jp_im'*. 
 
@@ -103,6 +89,7 @@ Below is the result of the regression model estimated by the OLS method.
 The regression model had a good overall fit as indicated by the high R-squared value of 0.692.
 
 Coefficient for both *Tariff Margin* and *Monthly Imports* shows positive relation with the *FTA Utilization Rate*. This result is reasonable by a common sense that as the tariff margin become larger, it implies the gain from applying FTA tariff rate will increase, which leads to greater incentive to use FTA for firms. Also, similarly, as the transaction size is bigger for the firm, incentive to use FTA will be greater.
+
 
 **OLS Regression Results for Japan's FTA Utilizarion Rate**
 Variable | Coefficient
